@@ -21,11 +21,11 @@ let score = 0;
 
 const init = () => {
   $question.textContent = quiz[quizCount].question;
-  
+
   const buttonLen = $buttons.length;
   let btnIndex = 0;
-  
-  while(btnIndex < buttonLen){
+
+  while (btnIndex < buttonLen) {
     $buttons[btnIndex].textContent = quiz[quizCount].answers[btnIndex];
     btnIndex++;
   }
@@ -33,7 +33,7 @@ const init = () => {
 
 const goToNext = () => {
   quizCount++;
-  if(quizCount < quizLen){
+  if (quizCount < quizLen) {
     init(quizCount);
   } else {
     // $window.alert('クイズ終了！');
@@ -42,7 +42,7 @@ const goToNext = () => {
 };
 
 const judge = (elm) => {
-  if(elm.textContent === quiz[quizCount].correct){
+  if (elm.textContent === quiz[quizCount].correct) {
     $window.alert('正解!');
     score++;
   } else {
@@ -53,7 +53,7 @@ const judge = (elm) => {
 
 const showEnd = () => {
   $question.textContent = '終了！あなたのスコアは' + score + '/' + quizLen + 'です';
-  
+
   const $items = $doc.getElementById('js-items');
   $items.style.visibility = 'hidden';
 };
@@ -63,7 +63,7 @@ init();
 let answersIndex = 0;
 let answersLen = quiz[quizCount].answers.length;
 
-while(answersIndex < answersLen){
+while (answersIndex < answersLen) {
   $buttons[answersIndex].addEventListener('click', (e) => {
     judge(e.target);
   });
